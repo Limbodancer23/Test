@@ -3,15 +3,30 @@ int StringNumber = StrNum("strings (>=3)");
 // System.Console.WriteLine("Enter number of ");
 string[] MyArray = CreateArray(StringNumber);
 System.Console.WriteLine("[" + (String.Join(", ", MyArray)) + "]");
-string[] ResArr = CutArr(MyArray);
+
+System.Console.WriteLine();
+
+string[] ResArr = CutArr(0);
 System.Console.WriteLine("[" + (String.Join(", ", ResArr)) + "]");
 
-string[] CutArr(string[] arr)
+string[] CutArr(int count)
 {
-    string[] resArr = new string[new Random().Next(0, 4)];
-    for (int i = 0; i < resArr.Length; i++)
+    for (int i = 0; i < MyArray.Length; i++)
     {
-        resArr[i] = arr[new Random().Next(0, arr.Length)];
+        if (MyArray[i].Length < 4 && MyArray[i].Length > 0)
+        {
+            count++;
+        }
+    }
+    string[] resArr = new string[count];
+    int j = 0;
+    for (int i = 0; i < MyArray.Length; i++)
+    {
+        if (MyArray[i].Length < 4 && MyArray[i].Length > 0)
+        {
+            resArr[j] = MyArray[i];
+            j++;
+        }
     }
     return resArr;
 }
